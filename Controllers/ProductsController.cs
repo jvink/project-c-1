@@ -10,13 +10,14 @@ namespace projectC.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
+
         ProjectContext _context;
 
         public ProductsController(ProjectContext context)
         {
             this._context = context;
         }
-        // GET api/Products
+        // GET api/values
         [HttpGet]
         public IQueryable<Product> Get()
         {
@@ -25,29 +26,32 @@ namespace projectC.Controllers
             return result;
         }
 
+
         // GET api/values/5
         [HttpGet("{id}")]
-    //     public IQueryable<Product> Get(int id)
-    //     {
-            
-    //    }
+        public IQueryable<Product> Get(int id)
+        {
+            var result = from m in this._context.Products where m.Id == id select m;
+
+            return result;
+        }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
